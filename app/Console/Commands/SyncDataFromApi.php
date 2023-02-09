@@ -6,7 +6,6 @@ use App\Models\People;
 use Illuminate\Console\Command;
 use Illuminate\Support\Facades\Http;
 use Illuminate\Support\Facades\DB;
-use App\Models\Person;
 use App\Models\Planet;
 use App\Models\Vehicle;
 use Illuminate\Support\Facades\Log;
