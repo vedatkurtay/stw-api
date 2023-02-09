@@ -20,7 +20,7 @@ return new class extends Migration
             $table->string('birth_year');
             $table->string('eye_color');
             $table->string('hair_color');
-            $table->integer('height');
+            $table->string('height');
             $table->string('homeworld');
             $table->string('mass');
             $table->string('skin_color');
