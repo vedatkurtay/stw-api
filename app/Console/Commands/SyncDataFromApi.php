@@ -140,7 +140,7 @@ class SyncDataFromApi extends Command
                     ]
                 );
             }
-            Log::info('Planet sync is finished');
+            Log::info('Vehicle sync is finished');
 
             // check if there's a next page of results
             if (!$currentPage->json()['next']) {
