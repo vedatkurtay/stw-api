@@ -45,4 +45,3 @@ Route::middleware('auth:sanctum')->group(function () {
         Route::get('/{id}', [VehicleController::class, 'show']);
     });
 });
-

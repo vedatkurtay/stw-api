@@ -37,8 +37,6 @@ class SynchronizeStarWarsData extends Command
 
     /**
      * Execute the console command.
-     *
-     * @return int
      */
     public function handle(): int
     {
@@ -54,16 +52,12 @@ class SynchronizeStarWarsData extends Command
         $this->syncResourceData('https://swapi.dev/api/vehicles/', 'Vehicles', Vehicle::class);
 
         $this->info('Data synchronized successfully!');
+
         return 0;
     }
 
     /**
      * Sync data for a given resource URL.
-     *
-     * @param string $url
-     * @param string $resourceName
-     * @param string $modelClass
-     * @return void
      */
     private function syncResourceData(string $url, string $resourceName, string $modelClass): void
     {
@@ -71,7 +65,7 @@ class SynchronizeStarWarsData extends Command
         $totalSynced = 0;
         while ($currentPage) {
             $results = $currentPage->json()['results'];
-            $this->info("Syncing " . count($results) . " $resourceName...");
+            $this->info('Syncing '.count($results)." $resourceName...");
 
             Log::info("$resourceName sync is starting...");
             foreach ($results as $result) {
@@ -84,7 +78,7 @@ class SynchronizeStarWarsData extends Command
 
             $totalSynced += count($results);
 
-            if (!$currentPage->json()['next']) {
+            if (! $currentPage->json()['next']) {
                 break;
             }
             $currentPage = Http::get($currentPage->json()['next']);

@@ -5,7 +5,6 @@ namespace App\Http\Controllers\People;
 use App\Http\Controllers\Controller;
 use App\Http\Resources\PersonResource;
 use App\Models\People;
-use Illuminate\Http\Request;
 
 class PeopleController extends Controller
 {

@@ -3,7 +3,6 @@
 namespace App\Http\Controllers;
 
 use App\Models\User;
-use Carbon\Carbon;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
@@ -32,24 +31,25 @@ class AuthController extends Controller
             'token_type' => 'Bearer',
         ]);
     }
+
     public function login(Request $request)
     {
         try {
             $validateUser = Validator::make($request->all(),
                 [
                     'email' => 'required|email',
-                    'password' => 'required'
+                    'password' => 'required',
                 ]);
 
-            if($validateUser->fails()){
+            if ($validateUser->fails()) {
                 return response()->json([
                     'status' => false,
                     'message' => 'validation error',
-                    'errors' => $validateUser->errors()
+                    'errors' => $validateUser->errors(),
                 ], 401);
             }
 
-            if(!Auth::attempt($request->only(['email', 'password']))){
+            if (! Auth::attempt($request->only(['email', 'password']))) {
                 return response()->json([
                     'status' => false,
                     'message' => 'Email & Password does not match with our record.',
@@ -61,13 +61,12 @@ class AuthController extends Controller
             return response()->json([
                 'status' => true,
                 'message' => 'User Logged In Successfully',
-                'token' => $user->createToken("API TOKEN")->plainTextToken
+                'token' => $user->createToken('API TOKEN')->plainTextToken,
             ], 200);
-
         } catch (\Throwable $th) {
             return response()->json([
                 'status' => false,
-                'message' => $th->getMessage()
+                'message' => $th->getMessage(),
             ], 500);
         }
     }
@@ -77,7 +76,7 @@ class AuthController extends Controller
         $request->user()->token()->revoke();
 
         return response()->json([
-            'message' => 'Successfully logged out'
+            'message' => 'Successfully logged out',
         ]);
     }
 

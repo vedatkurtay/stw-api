@@ -7,7 +7,6 @@ use App\Http\Controllers\Planet\PlanetController;
 use App\Http\Controllers\Vehicle\VehicleController;
 use App\Models\User;
 use Illuminate\Foundation\Testing\RefreshDatabase;
-use Illuminate\Foundation\Testing\WithFaker;
 use Tests\TestCase;
 
 class RouteTest extends TestCase

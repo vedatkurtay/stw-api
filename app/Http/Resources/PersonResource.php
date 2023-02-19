@@ -23,8 +23,8 @@ class PersonResource extends JsonResource
             'hair_color' => $this->hair_color,
             'skin_color' => $this->skin_color,
             'eye_color' => $this->eye_color,
-            'gender' =>$this->gender,
-            'homeworld' => $this->homeworld
+            'gender' => $this->gender,
+            'homeworld' => $this->homeworld,
         ];
     }
 }

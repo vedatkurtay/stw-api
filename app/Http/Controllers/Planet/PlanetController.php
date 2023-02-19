@@ -5,11 +5,9 @@ namespace App\Http\Controllers\Planet;
 use App\Http\Controllers\Controller;
 use App\Http\Resources\PlanetResource;
 use App\Models\Planet;
-use Illuminate\Http\Request;
 
 class PlanetController extends Controller
 {
-
     public function index()
     {
         return PlanetResource::collection(Planet::all());
@@ -19,6 +17,4 @@ class PlanetController extends Controller
     {
         return new PlanetResource(Planet::findOrFail($id));
     }
-
-
 }
