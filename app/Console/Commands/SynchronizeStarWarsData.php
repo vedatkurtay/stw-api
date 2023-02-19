@@ -8,6 +8,7 @@ use App\Models\Vehicle;
 use Illuminate\Console\Command;
 use Illuminate\Support\Facades\Http;
 use Illuminate\Support\Facades\Log;
+use Illuminate\Support\Str;
 
 class SynchronizeStarWarsData extends Command
 {
@@ -35,6 +36,9 @@ class SynchronizeStarWarsData extends Command
         parent::__construct();
     }
 
+    private const BASE_URL = 'https://swapi.dev/api/';
+    private const MODELS = [People::class, Planet::class, Vehicle::class];
+
     /**
      * Execute the console command.
      */
@@ -42,14 +46,19 @@ class SynchronizeStarWarsData extends Command
     {
         $this->info('Sync data from API to database is starting...');
 
-        // Sync people data
-        $this->syncResourceData('https://swapi.dev/api/people/', 'People', People::class);
+        foreach (self::MODELS as $model) {
+            $resourceName = Str::of($model)->classBasename()->lower()->plural()->value();
 
-        // Sync planet data
-        $this->syncResourceData('https://swapi.dev/api/planets/', 'Planets', Planet::class);
+            $url = Str::of($model)
+                ->classBasename()
+                ->lower()
+                ->plural()
+                ->prepend('/')
+                ->prepend(self::BASE_URL)
+                ->value();
 
-        // Sync vehicle data
-        $this->syncResourceData('https://swapi.dev/api/vehicles/', 'Vehicles', Vehicle::class);
+            $this->syncResourceData($url, $resourceName, $model);
+        }
 
         $this->info('Data synchronized successfully!');
 
