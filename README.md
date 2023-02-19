@@ -11,6 +11,7 @@ This is a Laravel application that uses the [Star Wars API](https://swapi.dev/) 
 2. Run `composer install`
 3. Run `cp .env.example .env`
 4. Run `php artisan migrate` or `sail artisan migrate`
+5. Run `php artisan sync-star-wars-data` or `sail artisan sync-star-wars-data`
 
 
 ### Usage
