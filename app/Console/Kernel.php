@@ -15,7 +15,7 @@ class Kernel extends ConsoleKernel
      */
     protected function schedule(Schedule $schedule)
     {
-        $schedule->command('sync:data-from-api')->everyThreeMinutes();
+        $schedule->command('sync-star-wars-data')->everyThreeMinutes();
     }
 
     /**
