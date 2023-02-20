@@ -4,6 +4,7 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Relations\BelongsToMany;
 
 class Vehicle extends Model
 {
@@ -23,4 +24,9 @@ class Vehicle extends Model
         'vehicle_class',
         'url',
     ];
+
+    public function pilots(): BelongsToMany
+    {
+        return $this->belongsToMany(People::class);
+    }
 }

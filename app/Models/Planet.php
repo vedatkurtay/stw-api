@@ -4,6 +4,7 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Relations\BelongsToMany;
 
 class Planet extends Model
 {
@@ -21,4 +22,9 @@ class Planet extends Model
         'rotation_period',
         'url',
     ];
+
+    public function residents(): BelongsToMany
+    {
+        return $this->belongsToMany(People::class);
+    }
 }
