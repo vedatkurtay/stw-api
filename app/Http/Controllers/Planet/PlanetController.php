@@ -13,8 +13,8 @@ class PlanetController extends Controller
         return PlanetResource::collection(Planet::all());
     }
 
-    public function show($id)
+    public function show(Planet $planet)
     {
-        return new PlanetResource(Planet::findOrFail($id));
+        return new PlanetResource(Planet::findOrFail($planet->id));
     }
 }

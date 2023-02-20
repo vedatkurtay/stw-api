@@ -13,8 +13,8 @@ class PeopleController extends Controller
         return PersonResource::collection(People::all());
     }
 
-    public function show($id)
+    public function show(People $people)
     {
-        return new PersonResource(People::findOrFail($id));
+        return new PersonResource(People::findOrFail($people->id));
     }
 }

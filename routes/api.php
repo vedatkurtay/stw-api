@@ -30,18 +30,18 @@ Route::middleware('auth:sanctum')->group(function () {
     // People Routes
     Route::prefix('people')->group(function () {
         Route::get('/', [PeopleController::class, 'index']);
-        Route::get('/{id}', [PeopleController::class, 'show']);
+        Route::get('/{people}', [PeopleController::class, 'show']);
     });
 
     // Planet Routes
     Route::prefix('planet')->group(function () {
         Route::get('/', [PlanetController::class, 'index']);
-        Route::get('/{id}', [PlanetController::class, 'show']);
+        Route::get('/{planet}', [PlanetController::class, 'show']);
     });
 
     // Vehicle Routes
     Route::prefix('vehicle')->group(function () {
         Route::get('/', [VehicleController::class, 'index']);
-        Route::get('/{id}', [VehicleController::class, 'show']);
+        Route::get('/{vehicle}', [VehicleController::class, 'show']);
     });
 });
