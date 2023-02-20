@@ -26,7 +26,7 @@ Route::post('register', [AuthController::class, 'register']);
 Route::post('login', [AuthController::class, 'login']);
 
 // Three resources: People, Planet, Vehicle route group
-Route::middleware('auth:sanctum')->group(function () {
+Route::middleware('auth:sanctum')->prefix('v1')->group(function () {
     // People Routes
     Route::prefix('people')->group(function () {
         Route::get('/', [PeopleController::class, 'index']);
