@@ -23,4 +23,15 @@ class Vehicle extends Model
         'vehicle_class',
         'url',
     ];
+
+    public function people()
+    {
+        return $this->belongsTo(People::class);
+    }
+
+    public function planet()
+    {
+        return $this->belongsTo(Planet::class);
+    }
+
 }

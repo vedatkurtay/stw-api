@@ -20,4 +20,14 @@ class People extends Model
         'gender',
         'homeworld',
     ];
+
+    public function planet()
+    {
+        return $this->belongsTo(Planet::class, 'planet_id');
+    }
+
+    public function vehicle()
+    {
+        return $this->hasOne(Vehicle::class, 'person_id');
+    }
 }

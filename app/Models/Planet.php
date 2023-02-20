@@ -21,4 +21,9 @@ class Planet extends Model
         'rotation_period',
         'url',
     ];
+
+    public function people()
+    {
+        return $this->hasMany(People::class);
+    }
 }
